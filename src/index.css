@@ -1,0 +1,296 @@
+:root {
+  --bg-core: #090b0e;
+  --bg-surface-1: #11141b;
+  --bg-surface-2: #181d27;
+  --bg-surface-3: #222938;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-focus: rgba(0, 229, 255, 0.45);
+  --cyan: #00e5ff;
+  --cyan-glow: rgba(0, 229, 255, 0.2);
+  --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.2);
+  --amber: #f59e0b;
+  --rose: #ef4444;
+  --text-main: #f3f4f6;
+  --text-dim: #9ca3af;
+  --text-muted: #64748b;
+  --font-display: 'Chakra Petch', -apple-system, sans-serif;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-core);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.04) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  transition: all 0.18s ease;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Common UI Atoms */
+.btn-primary {
+  background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(0, 198, 255, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-surface-2);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-surface-3);
+  border-color: var(--border-focus);
+  color: var(--cyan);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fca5a5;
+  font-family: var(--font-display);
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: var(--rose);
+  color: #fff;
+}
+
+.panel {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+}
+
+.panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.badge-cyan {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--cyan);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.badge-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--emerald);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.badge-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--amber);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+/* Screen Transitions */
+.screen-fade-in {
+  animation: screenFadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes screenFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Radar & Hologram Spinners */
+.radar-spinner {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 229, 255, 0.15);
+  border-top-color: var(--cyan);
+  border-right-color: var(--emerald);
+  animation: radarSpin 0.9s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+}
+
+@keyframes radarSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Circuit Scan Line */
+.circuit-scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), #fff, var(--cyan), transparent);
+  box-shadow: 0 0 12px var(--cyan);
+  animation: scanSweep 2s ease-in-out infinite alternate;
+}
+
+@keyframes scanSweep {
+  0% {
+    top: 5%;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 95%;
+    opacity: 0.2;
+  }
+}
+
+/* Fan Spin Animation when Powered On */
+.fan-spin-active {
+  animation: fanSpin 0.4s linear infinite;
+}
+
+@keyframes fanSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Energized Rig Chassis Breathing Glow */
+.chassis-powered-glow {
+  animation: chassisPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes chassisPulse {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.2), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    border-color: rgba(0, 229, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 45px rgba(0, 229, 255, 0.45), inset 0 0 35px rgba(0, 229, 255, 0.15);
+    border-color: var(--cyan);
+  }
+}
+
+/* Neon Cyber Progress Bar */
+.cyber-progress-fill {
+  background: linear-gradient(
+    90deg,
+    #00c6ff 0%,
+    #0072ff 50%,
+    #00e5ff 100%
+  );
+  background-size: 200% 100%;
+  animation: cyberGradient 1.5s linear infinite;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.6);
+}
+
+@keyframes cyberGradient {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Component Mount Snap */
+.mount-snap-effect {
+  animation: mountSnap 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes mountSnap {
+  0% {
+    transform: scale(0.92);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
